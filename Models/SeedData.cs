@@ -28,7 +28,8 @@ namespace CleanTooth.Models
                         Length = 10,
                         Width = 4,
                         Price = 100,
-                        Quailty ="5"
+                        Quailty ="5",
+                        Rating = 1.5M
                     },
 
                     new ToothPick
@@ -38,7 +39,8 @@ namespace CleanTooth.Models
                         Length = 9,
                         Width = 2,
                         Price = 110,
-                        Quailty = "7"
+                        Quailty = "7",
+                        Rating = 1.5M
                     },
 
                     new ToothPick
@@ -48,7 +50,8 @@ namespace CleanTooth.Models
                         Length = 10,
                         Width = 4,
                         Price = 100,
-                        Quailty = "5"
+                        Quailty = "5",
+                        Rating = 1.5M
                     },
 
                     new ToothPick
@@ -58,7 +61,8 @@ namespace CleanTooth.Models
                         Length = 10,
                         Width = 4,
                         Price = 100,
-                        Quailty = "5"
+                        Quailty = "5",
+                        Rating = 1.5M
                     },
 
                     new ToothPick
@@ -68,7 +72,8 @@ namespace CleanTooth.Models
                         Length = 10,
                         Width = 4,
                         Price = 100,
-                        Quailty = "5"
+                        Quailty = "5",
+                        Rating = 1.5M
                     },
 
                     new ToothPick
@@ -78,7 +83,8 @@ namespace CleanTooth.Models
                         Length = 10,
                         Width = 4,
                         Price = 100,
-                        Quailty = "5"
+                        Quailty = "5",
+                        Rating = 1.5M
                     },
 
                     new ToothPick
@@ -88,7 +94,8 @@ namespace CleanTooth.Models
                         Length = 10,
                         Width = 4,
                         Price = 100,
-                        Quailty = "5"
+                        Quailty = "5",
+                        Rating = 1.5M
                     },
 
                     new ToothPick
@@ -98,7 +105,8 @@ namespace CleanTooth.Models
                         Length = 10,
                         Width = 4,
                         Price = 100,
-                        Quailty = "5"
+                        Quailty = "5",
+                        Rating = 1.5M
                     },
 
                     new ToothPick
@@ -108,7 +116,8 @@ namespace CleanTooth.Models
                         Length = 10,
                         Width = 4,
                         Price = 100,
-                        Quailty = "5"
+                        Quailty = "5",
+                        Rating = 1.5M
                     },
 
                     new ToothPick
@@ -118,7 +127,8 @@ namespace CleanTooth.Models
                         Length = 10,
                         Width = 4,
                         Price = 100,
-                        Quailty = "5"
+                        Quailty = "5",
+                        Rating = 1.5M
                     }
 
                 );

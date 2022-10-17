@@ -20,8 +20,12 @@ namespace CleanTooth.Controllers
         }
 
         // GET: ToothPicks
-        public async Task<IActionResult> Index(string searchString)
+        public async Task<IActionResult> Index(string toothpickColor, string searchString)
         {
+            IQueryable<string> colorQuery = from m in _context.ToothPick
+                                            orderby m.Color
+                                            select m.Color;
+
             var toothpicks = from t in _context.ToothPick
                          select t;
 
@@ -30,7 +34,18 @@ namespace CleanTooth.Controllers
                 toothpicks = toothpicks.Where(s => s.Material.Contains(searchString));
             }
 
-            return View(await toothpicks.ToListAsync());
+            if (!string.IsNullOrEmpty(toothpickColor))
+            {
+                toothpicks = toothpicks.Where(x => x.Color == toothpickColor);
+            }
+
+            var toothpickColorVM = new ToothPickViewModel
+            {
+                Color = new SelectList(await colorQuery.Distinct().ToListAsync()),
+                ToothPicks = await toothpicks.ToListAsync()
+            };
+
+            return View(toothpickColorVM);
 
         }
 
@@ -63,7 +78,7 @@ namespace CleanTooth.Controllers
         // more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Id,Material,Color,Length,Width,Price,Quailty")] ToothPick toothPick)
+        public async Task<IActionResult> Create([Bind("Id,Material,Color,Length,Width,Price,Quailty,Rating")] ToothPick toothPick)
         {
             if (ModelState.IsValid)
             {
@@ -95,7 +110,7 @@ namespace CleanTooth.Controllers
         // more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("Id,Material,Color,Length,Width,Price,Quailty")] ToothPick toothPick)
+        public async Task<IActionResult> Edit(int id, [Bind("Id,Material,Color,Length,Width,Price,Quailty,Rating")] ToothPick toothPick)
         {
             if (id != toothPick.Id)
             {

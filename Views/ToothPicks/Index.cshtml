@@ -1,4 +1,4 @@
-﻿@model IEnumerable<CleanTooth.Models.ToothPick>
+﻿@model CleanTooth.Models.ToothPickViewModel
 
 @{
     ViewData["Title"] = "Index";
@@ -8,43 +8,47 @@
 
 <p>
     <a asp-action="Create">Create New</a>
-
+</p>
     <form asp-controller="Toothpicks" asp-action="Index" method="get">
-
-
         <p>
+            <select asp-for="ToothPickColor" asp-items="Model.Color">
+                <option value="">All</option>
+            </select>
             Material: <input type="text" name="SearchString" />
             <input type="submit" value="Filter" />
         </p>
     </form>
 
-</p>
 <table class="table">
     <thead>
         <tr>
             <th>
-                @Html.DisplayNameFor(model => model.Material)
+                @Html.DisplayNameFor(model => model.ToothPicks[0].Material)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Color)
+                @Html.DisplayNameFor(model => model.ToothPicks[0].Color)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Length)
+                @Html.DisplayNameFor(model => model.ToothPicks[0].Length)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Width)
+                @Html.DisplayNameFor(model => model.ToothPicks[0].Width)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Price)
+                @Html.DisplayNameFor(model => model.ToothPicks[0].Price)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Quailty)
+                @Html.DisplayNameFor(model => model.ToothPicks[0].Quailty)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ToothPicks[0].Rating)
             </th>
             <th></th>
         </tr>
     </thead>
     <tbody>
-@foreach (var item in Model) {
+        @foreach (var item in Model.ToothPicks)
+        {
         <tr>
             <td>
                 @Html.DisplayFor(modelItem => item.Material)
@@ -65,11 +69,14 @@
                 @Html.DisplayFor(modelItem => item.Quailty)
             </td>
             <td>
+                @Html.DisplayFor(modelItem => item.Rating)
+            </td>
+            <td>
                 <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
                 <a asp-action="Details" asp-route-id="@item.Id">Details</a> |
                 <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
             </td>
         </tr>
-}
+        }
     </tbody>
 </table>
