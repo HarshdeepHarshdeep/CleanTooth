@@ -20,9 +20,18 @@ namespace CleanTooth.Controllers
         }
 
         // GET: ToothPicks
-        public async Task<IActionResult> Index()
+        public async Task<IActionResult> Index(string searchString)
         {
-            return View(await _context.ToothPick.ToListAsync());
+            var toothpicks = from t in _context.ToothPick
+                         select t;
+
+            if (!String.IsNullOrEmpty(searchString))
+            {
+                toothpicks = toothpicks.Where(s => s.Material.Contains(searchString));
+            }
+
+            return View(await toothpicks.ToListAsync());
+
         }
 
         // GET: ToothPicks/Details/5

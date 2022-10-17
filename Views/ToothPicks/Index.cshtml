@@ -8,6 +8,16 @@
 
 <p>
     <a asp-action="Create">Create New</a>
+
+    <form asp-controller="Toothpicks" asp-action="Index" method="get">
+
+
+        <p>
+            Material: <input type="text" name="SearchString" />
+            <input type="submit" value="Filter" />
+        </p>
+    </form>
+
 </p>
 <table class="table">
     <thead>
